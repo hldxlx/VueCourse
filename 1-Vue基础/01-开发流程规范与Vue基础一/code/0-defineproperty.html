@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="lib/vue.js"></script>
+
+<style>
+    .red{
+        background: red;
+    }
+
+    .yellow{
+        background: yellow;
+    }
+</style>
+</head>
+<body>
+   <div id="box" >
+      
+   </div>
+
+
+
+    <script type="text/javascript">
+    	
+      var obj  ={}
+
+
+      var obox = document.getElementById("box");
+
+
+      //es5 定义属性的方法
+      
+
+      Object.defineProperty(obj,"name",{
+        get(){
+          console.log("我被访问了")
+          return obox.innerHTML
+        },
+        set(data){
+          console.log("有人修改了name值",data)
+          obox.innerHTML = data;
+        }
+      })
+
+      /*   
+        vue 数据驱动原理？ 数据更新原理？响应式 原理？
+        
+        (1) 数据通过object.defineProperty 进行get set 拦截，
+        (2) 通知 watcher ，观察者模式， 订阅发布模式，触发 组件重新渲染，创建新的虚拟dom(js对象模拟dom 树)
+         对比旧的虚拟dom ，找到不同的地方， 以最小的代价更新节点。
+
+         虚拟dom 参考react( 干爹 ：facebook)
+
+       */
+      
+      //  ["11","22"]
+
+      //  虚拟dom 树 
+
+      //  [ {
+      //     tag:"li",
+      //     innerText:"111"
+      //   },
+      //   {
+      //     tag:"li",
+      //     innerText:"222"
+      //   }
+      // ]
+
+      //  ["11","22","333"]
+
+      //    [ {
+      //     tag:"li",
+      //     innerText:"111"
+      //   },
+      //   {
+      //     tag:"li",
+      //     innerText:"222"
+      //   },
+      //    {
+      //     tag:"li",
+      //     innerText:"333"
+      //   }
+      // ]
+    </script>
+</body>
+</html>

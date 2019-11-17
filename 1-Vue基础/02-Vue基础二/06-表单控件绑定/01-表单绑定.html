@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+
+<script type="text/javascript" src="lib/vue.js"></script>
+</head>
+<body>
+    <div id="box">
+
+       <!-- <div v-model="dwa">
+         
+       </div> -->
+       <input type="text" v-model="mytext"/>
+
+        {{mytext}}
+
+      
+       <textarea v-model="mytext"></textarea>
+
+       记住用户名：<input type="checkbox" v-model="isChecked"/>
+       
+       <br/>
+       vue:<input type="checkbox" v-model="checkedgroup" value="vue"/>
+       react:<input type="checkbox" v-model="checkedgroup" value="react"/>
+       jquery:<input type="checkbox" v-model="checkedgroup" value="jquery"/>
+    
+       {{checkedgroup}}
+
+       <br/>
+
+       vue:<input type="radio" value="vue"  name="favorlan" v-model="picked"/>
+       react:<input type="radio" value="react" name="favorlan" v-model="picked"/>
+       jquery:<input type="radio" value="jquery" name="favorlan" v-model="picked"/>
+
+       <button>confirm</button>
+    </div>
+
+    <!-- <div v-model=""></div> -->
+
+    <script type="text/javascript">
+    	
+    	var vm = new Vue({
+    		el:"#box",
+
+    		data:{
+              name:"xiaoming",
+              mytext:"11111",
+              isChecked:false,
+              checkedgroup:[],//    
+              picked:""
+    		}
+    	})
+
+      
+      /*
+          v-model 绑定是 状态 跟 控件 value值或者checked
+
+          多个多选框 绑定 需要绑定一个数组， 需要每个控件都有一个value值
+       */
+    </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="lib/vue.js"></script>
+</head>
+<body>
+    <div id="box1">
+        {{name}}--{{age}}
+        <button @click="hello">
+          click
+        </button>
+    </div>	
+
+    <div id="box2">
+        {{name}}--{{age}}
+    </div>
+
+
+
+    <script type="text/javascript">
+    	 var a = {
+         data: {
+          name:"kerwin",
+          age:100
+         },
+         methods:{
+          hello(){
+            console.log("hello")
+          }
+         }
+       }
+
+
+       Vue.mixin({
+         data(){
+          return {
+            age:100
+          }
+         }, //涉及组件的中， data必须是一个函数 返回真正的状态
+
+         methods:{
+                   hello(){
+                     console.log("11111")
+                   }
+          },
+          computed:{
+            
+          }
+       })
+
+       new Vue({
+         el:"#box1",
+         data:{
+          name:"vue定义的name",
+         },
+         // mixins: [a],
+       })
+
+       new Vue({
+        el:"#box2",
+        data:{
+          name:"111111"
+        }
+       })
+
+
+       // {
+       //  name:"kerwin"
+       // }
+
+       // {
+       //  name:"xiaoming"
+       // }
+       
+       
+
+       // {
+       //  type:"kerwin",
+       //  text:"1111",
+       //  child:[
+       //    {
+
+       //    }
+       //  ]
+       // }
+
+
+       // {
+       //  type:"xiaoming",
+       //  text:"2222",
+       //  child:[
+       //    {
+
+       //    }
+       //  ]
+       // }
+
+    </script>
+</body>
+</html>

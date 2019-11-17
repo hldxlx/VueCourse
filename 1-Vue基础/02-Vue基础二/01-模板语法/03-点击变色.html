@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="lib/vue.js"></script>
+
+<style>
+  .active{
+    background: red;
+  }
+</style>
+</head>
+<body>
+    <div id="box">
+       <!-- <ul>
+          <li v-for="item,index in datalist">
+            {{item}}
+          </li>
+       </ul> -->
+
+      <!--  <ul>
+         <li :class="isActive1?'active':''">正在热映</li>
+         <li :class="isActive2?'active':''">即将上映</li>
+       </ul> -->
+
+
+       <ul>
+         <li v-for="data,index in datalist" :class="current===index?'active':''" @click="handleClick(index)">
+           {{data}}---{{index}}
+         </li>
+       </ul>
+    </div>
+
+    <script type="text/javascript">
+        var vm = new Vue({
+           el:"#box",
+           data:{
+            isActive1:false,
+            isActive2:false,
+
+            current:0,
+            datalist:["1111","2222","33333"]
+           },
+
+           methods:{
+            handleClick(index){
+              this.current = index;
+            }
+           }
+        })
+
+       var name="key"
+
+       var mylocation= "dalian"
+
+       var obj = {
+          [name]: "kerwin",
+          mylocation,
+          getName(){
+
+          }
+       }
+
+        // 新老虚拟dom对比的 时候 会 使用 diff 算法。
+    </script>
+</body>
+</html>
